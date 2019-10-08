@@ -1,6 +1,9 @@
-import tensorflow as tf
-import tensorflow_probability as tfp
-from tensorflow.keras.backend import batch_dot
+import warnings
+with warnings.catch_warnings():  
+    warnings.filterwarnings("ignore",category=FutureWarning)
+    import tensorflow as tf
+    import tensorflow_probability as tfp
+    from tensorflow.keras.backend import batch_dot
 
 def norm_derivative(dy, sparse_draws):
     """
@@ -11,9 +14,9 @@ def norm_derivative(dy, sparse_draws):
     dv = tf.tile(tf.expand_dims(dv,-1), (1, tf.shape(dy)[-1]))
     return dy - dv
 
-def reloss_draw(logits, const=1.):
+def il_draw(logits, const=1.):
     """
-    ReLoss drawing
+    sampling intermediate loss drawing
     """
     @tf.custom_gradient
     def _reloss_draw(logits):
