@@ -10,7 +10,7 @@ As a forward pass, it is simply the draw itself with no approximations. For a ba
 Given a random discrete categorical distribution I solve for minimizing Expectation(KL(pi_true||pi_model)) by only having access to singular draws at the time. Given that KL divergence is greater than 0 I show this is a suitable test by showing its an upper bound of our true object and creating a squeeze-based optimization problem. The simple proof:  
 
 <p align="center">
-  <img src="./readme_sources/ILS_ex1_0.png" width=350 height=250">
+  <img src="./readme_sources/ILS_ex1_0.png">
 </p> 
 
 For my experiemnts I use temperatures of .1, 1, 10 for the gumbel softmax and stepsizes of .1,.01,.001 for the intermediate loss sampling. 
